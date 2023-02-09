@@ -41,8 +41,8 @@ let variable: any = 42
 ```
 8. `Symbol` — представляет собой уникальный идентификатор. Даже если создать символы с одинаковым описанием, они все ровно будут уникальными.
 ```ts
-let id1 = Symbol(‘id’);
-let id2 = Symbol(‘id’);
+let id1 = Symbol("id");
+let id2 = Symbol("id");
 
 console.log(id1 === id2); // false
 ```
