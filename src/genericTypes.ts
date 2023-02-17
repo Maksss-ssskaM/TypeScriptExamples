@@ -1,5 +1,5 @@
-function include<T>(array: T[], query:T): boolean {
-    for (const value of array) {
+function include<T>(arr: Array<T>, query:T): boolean {
+    for (const value of arr) {
         if (value === query) {
             return true;
         }

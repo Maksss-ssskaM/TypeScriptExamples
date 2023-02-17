@@ -13,8 +13,8 @@
 Вместо конкретного типа объявляется «переменная», а затем в неё передаётся нужный тип. Таким образом, получается код, который может работать с разными типами:
 
 ```ts
-function include<T>(array: T[], query:T): boolean {
-    for (const value of array) {
+function include<T>(arr: Array<T>, query:T): boolean {
+    for (const value of arr) {
         if (value === query) {
             return true;
         }
@@ -33,4 +33,35 @@ include<string>(['egor', 'sasha', 'dima'], 'dima'); // true
 
 // передаём number в качестве типа
 include<number>([2, 3, 5], 4); // false
+```
+
+## Дженерик-классы
+
+```ts
+class User<T> {
+ 
+    private _id: T;
+    constructor(id:T) {
+ 
+        this._id=id;
+    }
+    getId(): T {
+ 
+        return this._id;
+    }
+}
+ 
+let user = new User<number>(3);
+console.log(user.getId()); // возвращает number
+ 
+let user2 = new User<string>("abc");
+console.log(user2.getId()); // возвращает string
+```
+
+Но если мы уже типизировали объект, то сменить данный тип уже не получится (повторное создание объекта не будет работать)
+
+```ts
+let user = new User<number>(3);
+console.log(tom.getId());
+user = new User<string>("abc"); // ошибка
 ```
